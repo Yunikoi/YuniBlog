@@ -1399,3 +1399,16 @@ pre .javascript .function {
   background: rgba(255,255,255,0.8) !important;
   border-radius: 0 15px 15px 0;
 }
+.post-meta {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.post-meta .attr {
+  font-size: 13px;
+  color: #888;
+}

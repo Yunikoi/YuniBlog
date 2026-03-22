@@ -129,7 +129,6 @@ body {
     object-fit: cover;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
-}
 .nav .avatar-name .radius img {
   border-radius: 50%;
 }
@@ -1358,13 +1357,31 @@ pre .javascript .function {
   max-width: calc(100% - 100px);
   padding: 0 10px;
 }
-/* 微调歌词文字样式 */
+#aplayer {
+  z-index: 99999 !important;
+}
+
+/* 针对 AirCloud 主题的全局歌词样式 */
+.aplayer.aplayer-fixed .aplayer-lrc {
+  display: block !important;
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 80px !important;
+  z-index: 100001 !important; /* 比播放器更高 */
+  height: 40px !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-radius: 10px 10px 0 0;
+  width: auto !important;
+  max-width: calc(100% - 120px);
+  padding: 0 15px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+}
+
 .aplayer.aplayer-fixed .aplayer-lrc p {
   font-size: 14px !important;
-  color: #666 !important;
+  color: #4990E2 !important; /* 改成你主题里的蓝色，更有质感 */
   line-height: 40px !important;
   margin: 0 !important;
   text-align: left !important;
-  opacity: 1 !important;
-  font-weight: bold;
+  font-weight: 500 !important;
 }

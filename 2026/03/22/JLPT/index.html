@@ -230,26 +230,22 @@
 
 <script>
 window.onload = function() {
-    // 检查 APlayer 是否真的加载成功了
     if (typeof APlayer !== 'undefined') {
-        const ap = new APlayer({
+        window.ap = new APlayer({
             container: document.getElementById('aplayer'),
             fixed: true,
-            mini: true,
             lrcType: 3,
-            audio: [
-                {
-                    name: '咏春',
-                    artist: '七朵组合',
-                    url: '/music/yongchun.mp3',
-                    cover: 'https://p1.music.126.net/H9v_v46I2Y-YvS-mH8Vp6Q==/109951172859327838.jpg',
-                    lrc: 'https://api.i-meto.com/meting/api?server=netease&type=lrc&id=372359'
-                }
-            ]
+            order: 'list',
+            loop: 'all',
+            storageName: 'aplayer-setting', // 开启记忆播放，跨页面不重置
+            audio: [{
+                name: '咏春',
+                artist: '七朵组合',
+                url: '/music/yongchun.mp3',
+                cover: 'https://p1.music.126.net/H9v_v46I2Y-YvS-mH8Vp6Q==/109951172859327838.jpg',
+                lrc: 'https://api.i-meto.com/meting/api?server=netease&type=lrc&id=372359'
+            }]
         });
-        console.log("播放器已成功挂载！");
-    } else {
-        console.error("APlayer 库加载失败，请检查网络或 CDN 链接！");
     }
 };
 </script>

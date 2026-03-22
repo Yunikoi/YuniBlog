@@ -1357,31 +1357,45 @@ pre .javascript .function {
   max-width: calc(100% - 100px);
   padding: 0 10px;
 }
+/* 确保播放器容器可见 */
 #aplayer {
-  z-index: 99999 !important;
+  z-index: 999999;
 }
 
-/* 针对 AirCloud 主题的全局歌词样式 */
+/* 强制歌词展示在左侧区域 */
 .aplayer.aplayer-fixed .aplayer-lrc {
   display: block !important;
   position: fixed !important;
-  bottom: 0 !important;
-  left: 80px !important;
-  z-index: 100001 !important; /* 比播放器更高 */
-  height: 40px !important;
-  background: rgba(255, 255, 255, 0.9) !important;
-  border-radius: 10px 10px 0 0;
-  width: auto !important;
-  max-width: calc(100% - 120px);
-  padding: 0 15px;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+  bottom: 50px !important; /* 位于左侧栏底部上方 */
+  left: 20px !important;   /* 对应你的 index-left 区域 */
+  width: 200px !important; /* 宽度适配左侧栏 */
+  height: 300px !important; /* 给歌词留出大块区域 */
+  background: none !important;
+  z-index: 10;
 }
 
+/* 水墨风文字样式 */
 .aplayer.aplayer-fixed .aplayer-lrc p {
-  font-size: 14px !important;
-  color: #4990E2 !important; /* 改成你主题里的蓝色，更有质感 */
-  line-height: 40px !important;
-  margin: 0 !important;
-  text-align: left !important;
-  font-weight: 500 !important;
+  font-family: "STKaiti", "KaiTi", serif !important; /* 强制使用楷体模拟水墨感 */
+  font-size: 16px !important;
+  color: #333 !important;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1); /* 淡淡的水墨晕染感 */
+  line-height: 2.5 !important;
+  height: 40px !important;
+  opacity: 0.4 !important; /* 非当前行调淡 */
+  transition: all 0.5s ease;
+}
+
+/* 当前播放行高亮 */
+.aplayer.aplayer-fixed .aplayer-lrc p.aplayer-lrc-current {
+  opacity: 1 !important;
+  color: #000 !important;
+  font-weight: bold !important;
+  transform: scale(1.1); /* 当前行稍微放大 */
+}
+
+/* 隐藏播放器自带的那个窄窄的控制条背景，让它更干净 */
+.aplayer.aplayer-fixed .aplayer-body {
+  background: rgba(255,255,255,0.8) !important;
+  border-radius: 0 15px 15px 0;
 }

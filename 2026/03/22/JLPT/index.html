@@ -229,25 +229,33 @@
 
 
 <script>
-window.onload = function() {
+window.addEventListener('load', function() {
     if (typeof APlayer !== 'undefined') {
+        // 销毁可能存在的旧实例
+        if (window.ap) window.ap.destroy();
+
         window.ap = new APlayer({
             container: document.getElementById('aplayer'),
             fixed: true,
             lrcType: 3,
-            order: 'list',
-            loop: 'all',
-            storageName: 'aplayer-setting', // 开启记忆播放，跨页面不重置
             audio: [{
                 name: '咏春',
                 artist: '七朵组合',
                 url: '/music/yongchun.mp3',
-                cover: 'https://p1.music.126.net/H9v_v46I2Y-YvS-mH8Vp6Q==/109951172859327838.jpg',
-                lrc: 'https://api.i-meto.com/meting/api?server=netease&type=lrc&id=372359'
+                // 换一个更稳定的封面链接
+                cover: 'https://p2.music.126.net/H9v_v46I2Y-YvS-mH8Vp6Q==/109951172859327838.jpg',
+                // 歌词改为直接调用网易云原始接口，规避部分代理拦截
+                lrc: 'https://music.163.com/api/song/media?id=372359'
             }]
         });
+
+        // 强制修正歌词位置到左侧
+        var lrcContainer = document.querySelector('.aplayer-lrc');
+        if (lrcContainer) {
+            lrcContainer.style.cssText = "display: block !important; position: fixed !important; bottom: 100px !important; left: 20px !important; width: 200px !important; height: 300px !important; text-align: left !important;";
+        }
     }
-};
+});
 </script>
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
